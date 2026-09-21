@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="ic_launcher_background">#0B0B0E</color>
+    <color name="fs_background">#0B0B0E</color>
+    <color name="fs_orange">#FF8A1E</color>
+    <color name="fs_orange_light">#FFC17A</color>
+    <color name="fs_orange_deep">#D9660D</color>
+</resources>

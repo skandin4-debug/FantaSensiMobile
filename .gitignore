@@ -1,0 +1,20 @@
+# ---- Android ----
+.gradle/
+build/
+local.properties
+.idea/
+*.iml
+captures/
+*.apk
+*.aab
+.DS_Store
+
+# ---- iOS (gerados pelo XcodeGen / build) ----
+ios/FantaSensi.xcodeproj/
+ios/FantaSensi/Info.plist
+ios/build/
+ios/DerivedData/
+ios/Payload/
+ios/*.ipa
+ios/**/xcuserdata/
+ios/**/*.xcuserstate
