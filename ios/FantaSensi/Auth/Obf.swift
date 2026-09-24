@@ -14,6 +14,8 @@ enum Obf {
 
         var outLength = 0
         var out = Data(count: cipher.count + kCCBlockSizeAES128)
+        let outCount = out.count
+        let cipherCount = cipher.count
 
         let status: CCCryptorStatus = out.withUnsafeMutableBytes { outPtr in
             cipher.withUnsafeBytes { cipherPtr in
@@ -25,8 +27,8 @@ enum Obf {
                             CCOptions(kCCOptionPKCS7Padding),
                             keyPtr.baseAddress, kCCKeySizeAES256,
                             ivPtr.baseAddress,
-                            cipherPtr.baseAddress, cipher.count,
-                            outPtr.baseAddress, out.count,
+                            cipherPtr.baseAddress, cipherCount,
+                            outPtr.baseAddress, outCount,
                             &outLength
                         )
                     }
