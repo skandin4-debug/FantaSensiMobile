@@ -1,6 +1,7 @@
 name: FantaSensi
 options:
   bundleIdPrefix: com.fantasensi
+  projectFormat: xcode14_0
   deploymentTarget:
     iOS: "15.0"
   createIntermediateGroups: true
