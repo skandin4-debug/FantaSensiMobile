@@ -5,11 +5,11 @@ import UIKit
 // Nenhuma mudança real é feita no sistema.
 struct DashboardView: View {
     @State private var cpu = 34
-    @State private var ram = 61
-    @State private var ramUsed = "8.0 GB"
-    @State private var ramTotal = "16.0 GB"
-    @State private var disk = 47
-    @State private var diskFree = "12.4 GB"
+    @State private var ram = 0
+    @State private var ramUsed = "--"
+    @State private var ramTotal = "--"
+    @State private var disk = 0
+    @State private var diskFree = "--"
 
     @State private var optimizeBusy = false
     @State private var optimizeProgress: Double = 0
@@ -48,9 +48,13 @@ struct DashboardView: View {
         .background(Color.fsBackground)
         .onReceive(timer) { _ in
             guard !optimizeBusy else { return }
+            let s = DeviceStats.snapshot()
             cpu = Int.random(in: (cpu - 4)...(cpu + 4)).clamped(to: 5...95)
-            ram = Int.random(in: (ram - 3)...(ram + 3)).clamped(to: 20...95)
-            disk = Int.random(in: (disk - 1)...(disk + 1)).clamped(to: 10...95)
+            ram = s.ramLoadPercent
+            ramUsed = formatBytes(Int64(s.ramUsedBytes))
+            ramTotal = formatBytes(Int64(s.ramTotalBytes))
+            disk = s.storageUsedPercent
+            diskFree = formatBytes(s.storageFreeBytes)
         }
         .onDisappear {
             optimizeTimer?.invalidate()

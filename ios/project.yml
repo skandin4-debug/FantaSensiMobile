@@ -13,6 +13,8 @@ targets:
     deploymentTarget: "15.0"
     sources:
       - path: FantaSensi
+      - path: Resources
+        buildPhase: resources
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.fantasensi.mobile
